@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'proyecto',
+			'database'  => 'pasantias_roger',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',

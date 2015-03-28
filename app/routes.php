@@ -11,7 +11,19 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+if(Auth::check()):
+	if(Auth::user()->type == 'administrador'):
+		Route::controller('/administrador', 'AdministradorController');
+	else:
+		Route::controller('/perfil','PerfilController');
+	endif;
+else:
+
+	Route::controller('/auth', 'AuthenticationController');
+	Route::any('/{one?}/{two?}/{three?}/{four?}/{five?}/', function($one = '' ,$two = '' ,$three = '' ,$four = '' ,$five = '' ){
+		
+		return Redirect::to('/auth/login');
+
+	});
+	# Rutas que nonecesitan Inicio de sesion
+endif;
