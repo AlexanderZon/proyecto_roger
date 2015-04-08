@@ -27,8 +27,8 @@ class AuthenticationController extends \BaseController {
 	{
 
 		if($this->verifySession()):
+
 			return Redirect::to('/');
-			// dd("sesion");
 
 		else:
 
@@ -52,7 +52,8 @@ class AuthenticationController extends \BaseController {
 	{
 		$credentials = array(
 			'username' => Input::get('username'),
-			'password' => Input::get('password')
+			'password' => Input::get('password'),
+			'status' => 'activo'
 			);
 		if(Auth::attempt($credentials)):
 

@@ -44,6 +44,7 @@
 	<link rel="stylesheet" type="text/css" href="/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css"/>
 	<link rel="stylesheet" type="text/css" href="/plugins/bootstrap-editable/inputs-ext/address/address.css"/>
+	<link rel="stylesheet" type="text/css" href="/plugins/bootstrap-navbar-dropdowns/css/navbar.css"/>
 	<link rel="stylesheet" type="text/css" href="/plugins/fancybox/source/jquery.fancybox.css"/>
 	<!-- END PLUGINS USED BY X-EDITABLE -->
 
@@ -70,8 +71,122 @@
 	@yield('css')
 </head>
 <body>
+
+	<header class="row">
+		<div class="col-md-3 col-sm-1"></div>
+		<div class="col-md-6">
+			<img class="col-md-12 col-sm-10 col-xs-12" src="/images/cintillo.png">			
+		</div>
+		<div class="col-md-3 col-sm-1"></div>
+	</header>
+
+	<div class="row">
+		
+		<div class="navbar navbar-default">
+	        <div class="container">
+	            <div class="navbar-header">
+	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                </button>
+	                <a class="navbar-brand" href="#">Aviación</a>
+	            </div>
+	            <div class="collapse navbar-collapse">
+	                <ul class="nav navbar-nav">
+	                    <li class="active"><a href="/administrador">Inicio</a></li>
+	                    <li><a href="/administrador">GitHub</a></li>
+	                    <li>
+	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu 1 <b class="caret"></b></a>
+	                        <ul class="dropdown-menu">
+	                            <li><a href="#">Action</a></li>
+	                            <li><a href="#">Another action</a></li>
+	                            <li><a href="#">Something else here</a></li>
+	                            <li class="divider"></li>
+	                            <li><a href="#">Separated link</a></li>
+	                            <li class="divider"></li>
+	                            <li><a href="#">One more separated link</a></li>
+	                            <li>
+	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret caret-right"></b></a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a href="#">Action</a></li>
+	                                    <li>
+	                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret caret-right"></b></a>
+	                                        <ul class="dropdown-menu">
+	                                            <li>
+	                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret caret-right"></b></a>
+	                                                <ul class="dropdown-menu">
+	                                                    <li><a href="#">Action</a></li>
+	                                                    <li><a href="#">Another action</a></li>
+	                                                    <li><a href="#">Something else here</a></li>
+	                                                    <li class="divider"></li>
+	                                                    <li><a href="#">Separated link</a></li>
+	                                                    <li class="divider"></li>
+	                                                    <li><a href="#">One more separated link</a></li>
+	                                                </ul>
+	                                            </li>
+	                                        </ul>
+	                                    </li>
+	                                </ul>
+	                            </li>
+	                        </ul>
+	                    </li>
+	                    <li>
+	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu 2 <b class="caret"></b></a>
+	                        <ul class="dropdown-menu">
+	                            <li><a href="#">Action</a></li>
+	                            <li><a href="#">Another action</a></li>
+	                            <li><a href="#">Something else here</a></li>
+	                            <li class="divider"></li>
+	                            <li><a href="#">Separated link</a></li>
+	                            <li class="divider"></li>
+	                            <li><a href="#">One more separated link</a></li>
+	                            <li>
+	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret caret-right"></b></a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a href="#">Action</a></li>
+	                                    <li><a href="#">Another action</a></li>
+	                                    <li><a href="#">Something else here</a></li>
+	                                    <li class="divider"></li>
+	                                    <li><a href="#">Separated link</a></li>
+	                                    <li class="divider"></li>
+	                                    <li>
+	                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret caret-right"></b></a>
+	                                        <ul class="dropdown-menu">
+	                                            <li>
+	                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret caret-right"></b></a>
+	                                                <ul class="dropdown-menu">
+	                                                    <li><a href="#">Action</a></li>
+	                                                    <li><a href="#">Another action</a></li>
+	                                                    <li><a href="#">Something else here</a></li>
+	                                                    <li class="divider"></li>
+	                                                    <li><a href="#">Separated link</a></li>
+	                                                    <li class="divider"></li>
+	                                                    <li><a href="#">One more separated link</a></li>
+	                                                </ul>
+	                                            </li>
+	                                        </ul>
+	                                    </li>
+	                                </ul>
+	                            </li>
+	                        </ul>
+	                    </li>
+	                </ul>
+	            </div><!--/.nav-collapse -->
+	        </div>
+	    </div>
+		
+	</div>
+
+	<div class="row">
+
+			@yield('content')
+		
+	</div>
+
+		
 	
-	@yield('content')
 
 	<!--[if lt IE 9]>
 	<script src="/plugins/respond.min.js"></script>
@@ -106,6 +221,7 @@
 	<script src="/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js" type="text/javascript"></script>
 	<script src="/plugins/bootstrap-editable/inputs-ext/address/address.js" type="text/javascript"></script>
 	<script src="/plugins/bootstrap-editable/inputs-ext/wysihtml5/wysihtml5.js" type="text/javascript"></script>
+	<script src="/plugins/bootstrap-navbar-dropdowns/js/navbar.js" type="text/javascript"></script>
 
 
 	<!-- END PAGE LEVEL PLUGINS -->
