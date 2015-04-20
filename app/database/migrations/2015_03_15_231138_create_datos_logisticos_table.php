@@ -15,6 +15,7 @@ class CreateDatosLogisticosTable extends Migration {
 		Schema::create('datos_logisticos', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('user_id');
 			$table->string('t_patriota');
 			$table->string('t_braga_vuelo');
 			$table->string('t_braga_mecanica');

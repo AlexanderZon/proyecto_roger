@@ -15,6 +15,7 @@ class CreateDatosOperacionalesTable extends Migration {
 		Schema::create('datos_operacionales', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('user_id');
 			$table->longText('armamento');
 			$table->string('serial');
 			$table->string('tipo');

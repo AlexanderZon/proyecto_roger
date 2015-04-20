@@ -2,11 +2,18 @@
 
 class AdministradorController extends \BaseController {
 
-	protected $route = '/administrador';
+	protected static $route = '/administrador';
+
+	protected static $module = 'administrador_index';
 
 	public function getIndex(){
 
-		return View::make('administrador.index');
+		$args = array(
+			'route' => self::$route,
+			'module' => self::$module,
+			);
+
+		return View::make('administrador.index')->with($args);
 		
 	}
 

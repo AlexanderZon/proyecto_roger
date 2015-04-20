@@ -84,12 +84,6 @@ class AuthenticationController extends \BaseController {
 	public function getLogout()
 	{
 
-		Audits::add(Auth::user(), array(
-			'name' => 'auth_logout',
-			'title' => 'Cierre de Sesión',
-			'description' => 'El usuario ' . Auth::user()->username . ' ha Cerrado Sesión'
-			), 'DELETE');
-
 		Auth::logout();
 
 		return Redirect::to( $this->route . '/login' );

@@ -13,12 +13,23 @@
 
 if(Auth::check()):
 	if(Auth::user()->type == 'administrador'):
+		Route::controller('/administrador/grados', 'GradosController');
+		Route::controller('/administrador/cargos', 'CargosController');
+		Route::controller('/administrador/usuarios', 'UsuariosController');
+		Route::controller('/administrador/condecoraciones', 'CondecoracionesController');
+		Route::controller('/administrador/sanciones', 'SancionesController');
+		Route::controller('/administrador/personal', 'PersonalController');
 		Route::controller('/administrador', 'AdministradorController');
+		Route::get('/', function(){
+			return Redirect::to('/administrador');
+		});
 	else:
 		Route::controller('/perfil','PerfilController');
 	endif;
+	Route::controller('/auth', 'AuthenticationController');
 else:
 
+endif;
 	Route::controller('/auth', 'AuthenticationController');
 	Route::any('/{one?}/{two?}/{three?}/{four?}/{five?}/', function($one = '' ,$two = '' ,$three = '' ,$four = '' ,$five = '' ){
 		
@@ -26,4 +37,3 @@ else:
 
 	});
 	# Rutas que nonecesitan Inicio de sesion
-endif;

@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 	<meta charset="utf-8"/>
-	<title>Aviación</title>
+	<title>Sistema SIP</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1" name="viewport"/>
 	<meta content="" name="description"/>
@@ -47,7 +47,10 @@
 	<link rel="stylesheet" type="text/css" href="/plugins/bootstrap-navbar-dropdowns/css/navbar.css"/>
 	<link rel="stylesheet" type="text/css" href="/plugins/fancybox/source/jquery.fancybox.css"/>
 	<!-- END PLUGINS USED BY X-EDITABLE -->
-
+	<link rel="stylesheet" type="text/css" href="/plugins/DataTables-1.10.6/media/css/jquery.dataTables.css"/>
+	<link rel="stylesheet" type="text/css" href="/plugins/DataTables-1.10.6/extensions/Responsive/css/dataTables.responsive.css"/>
+	<link rel="stylesheet" type="text/css" href="/plugins/DataTables-1.10.6/extensions/Scroller/css/dataTables.scroller.css"/>
+	<link rel="stylesheet" type="text/css" href="/plugins/DataTables-1.10.6/extensions/TableTools/css/dataTables.tableTools.css"/>
 	<!-- <link rel="stylesheet" type="text/css" href="/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
@@ -65,7 +68,20 @@
 	<link href="/assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css" id="style_color"/>
 	<link href="/assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/> -->
 
+	<link rel="stylesheet" type="text/css" href="/css/material-ui-color-palette.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/tile.css"/>
 	<!-- END THEME STYLES -->
+	<style type="text/css">
+		.center{
+			text-align: center;
+		}
+		.right{
+			text-align: right;
+		}
+		.left{
+			text-align: left;
+		}
+	</style>
 	<link rel="shortcut icon" href="favicon.ico"/>
 
 	@yield('css')
@@ -91,54 +107,38 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                </button>
-	                <a class="navbar-brand" href="#">Aviación</a>
+	                <a class="navbar-brand" href="#">Sistema SIP</a>
 	            </div>
 	            <div class="collapse navbar-collapse">
 	                <ul class="nav navbar-nav">
-	                    <li class="active"><a href="/administrador">Inicio</a></li>
-	                    <li><a href="/administrador">GitHub</a></li>
+	                    <li class="{{ $module == 'administrador_index' ? 'active' : '' }} "><a href="/administrador">Inicio</a></li>
+	                    <li class="{{ $module == 'administrador_personal' ? 'active' : '' }} "><a href="/administrador/personal">Personal</a></li>
+	                    <li class="{{ $module == 'administrador_sanciones' ? 'active' : '' }} "><a href="/administrador/sanciones">Sanciones</a></li>
+	                    <li class="{{ $module == 'administrador_condecoraciones' ? 'active' : '' }} "><a href="/administrador/condecoraciones">Condecoraciones</a></li>
+	                    <li class="{{ $module == 'administrador_usuarios' ? 'active' : '' }} "><a href="/administrador/usuarios">Usuarios de Dpto</a></li>
 	                    <li>
-	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu 1 <b class="caret"></b></a>
+	                    	<form method="post" action="/administrador" class="input-group" style="padding-top:.5em; width:250px">
+                    			<input class="form-control" type="text" name="search" placeholder="Buscar..." />
+								<span class="input-group-addon" id="basic-addon2" style="cursor:pointer" onclick="">Buscar</span>
+	                    	</form>
+	                    </li>
+	                    <li>
+	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración<b class="caret"></b></a>
 	                        <ul class="dropdown-menu">
-	                            <li><a href="#">Action</a></li>
-	                            <li><a href="#">Another action</a></li>
-	                            <li><a href="#">Something else here</a></li>
+	                            <li><a href="/administrador/cargos">Cargos</a></li>
+	                            <li><a href="/administrador/grados">Grados</a></li>
 	                            <li class="divider"></li>
-	                            <li><a href="#">Separated link</a></li>
-	                            <li class="divider"></li>
-	                            <li><a href="#">One more separated link</a></li>
-	                            <li>
-	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret caret-right"></b></a>
-	                                <ul class="dropdown-menu">
-	                                    <li><a href="#">Action</a></li>
-	                                    <li>
-	                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret caret-right"></b></a>
-	                                        <ul class="dropdown-menu">
-	                                            <li>
-	                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret caret-right"></b></a>
-	                                                <ul class="dropdown-menu">
-	                                                    <li><a href="#">Action</a></li>
-	                                                    <li><a href="#">Another action</a></li>
-	                                                    <li><a href="#">Something else here</a></li>
-	                                                    <li class="divider"></li>
-	                                                    <li><a href="#">Separated link</a></li>
-	                                                    <li class="divider"></li>
-	                                                    <li><a href="#">One more separated link</a></li>
-	                                                </ul>
-	                                            </li>
-	                                        </ul>
-	                                    </li>
-	                                </ul>
-	                            </li>
+	                            <li><a href="/administrador/clave">Cambio de Clave</a></li>
+	                            <li><a href="/auth/logout">Cerrar Sesión</a></li>
 	                        </ul>
 	                    </li>
+	                    <!-- 
 	                    <li>
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu 2 <b class="caret"></b></a>
 	                        <ul class="dropdown-menu">
 	                            <li><a href="#">Action</a></li>
 	                            <li><a href="#">Another action</a></li>
 	                            <li><a href="#">Something else here</a></li>
-	                            <li class="divider"></li>
 	                            <li><a href="#">Separated link</a></li>
 	                            <li class="divider"></li>
 	                            <li><a href="#">One more separated link</a></li>
@@ -171,7 +171,7 @@
 	                                </ul>
 	                            </li>
 	                        </ul>
-	                    </li>
+	                    </li> -->
 	                </ul>
 	            </div><!--/.nav-collapse -->
 	        </div>
@@ -223,7 +223,10 @@
 	<script src="/plugins/bootstrap-editable/inputs-ext/wysihtml5/wysihtml5.js" type="text/javascript"></script>
 	<script src="/plugins/bootstrap-navbar-dropdowns/js/navbar.js" type="text/javascript"></script>
 
-
+	<script type="text/javascript" charset="utf8" src="/plugins/DataTables-1.10.6/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="/plugins/DataTables-1.10.6/extensions/Responsive/js/dataTables.responsive.js"></script>
+	<script type="text/javascript" charset="utf8" src="/plugins/DataTables-1.10.6/extensions/Scroller/js/dataTables.scroller.js"></script>
+	<script type="text/javascript" charset="utf8" src="/plugins/DataTables-1.10.6/extensions/TableTools/js/dataTables.tableTools.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE DATATABLES SCRIPTS -->
 	<!--- <script type="text/javascript" src="/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
